@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Moonwalker - Michael Jackson</title>
+    <link rel="stylesheet" href="/src/index.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@1,300;1,400&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-[#050505] text-[#e0e0e0] w-full min-h-screen overflow-hidden flex flex-col font-sans p-6 md:p-12 select-none selection:bg-gold/20">
+    <!-- Atmospheric Background Effects -->
+    <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+      <div class="absolute top-[20%] left-[10%] w-[40%] h-[40%] bg-gold/5 rounded-full blur-[150px] opacity-30"></div>
+      <div class="absolute bottom-[10%] right-[5%] w-[50%] h-[50%] bg-[#3a1510]/10 rounded-full blur-[180px] opacity-20"></div>
+    </div>
+
+    <nav class="flex justify-between items-center mb-10 border-b border-white/10 pb-6 animate-fade-in">
+      <div class="flex items-center gap-10">
+        <span class="text-2xl font-bold tracking-tighter text-white uppercase italic">Moonwalker</span>
+        <div class="hidden md:flex gap-8 text-sm font-medium uppercase tracking-widest text-white/50">
+          <a href="#" class="text-white hover:text-gold transition-colors">The King</a>
+          <a href="#" class="hover:text-gold transition-colors">Discography</a>
+          <a href="#" class="hover:text-gold transition-colors">Gallery</a>
+        </div>
+      </div>
+      <div class="flex items-center gap-4">
+        <div class="bg-white/5 border border-white/10 px-4 py-2 rounded-full flex items-center gap-3">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="opacity-40"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <span class="text-[10px] tracking-widest uppercase opacity-40 font-bold">Search Records...</span>
+        </div>
+      </div>
+    </nav>
+
+    <main class="flex flex-col md:flex-row gap-12 flex-1 items-stretch max-w-7xl mx-auto w-full">
+      <!-- Left Column: Primary Player -->
+      <div class="w-full md:w-3/5 flex flex-col animate-slide-up">
+        <div class="relative group">
+          <div class="absolute -inset-1 bg-gradient-to-r from-gold to-gold-dark opacity-10 blur-xl transition-opacity group-hover:opacity-20"></div>
+          <div class="relative glass-card aspect-square w-full max-h-[420px] flex items-center justify-center overflow-hidden rounded-sm">
+            <div id="album-bg" class="absolute inset-0 bg-cover bg-center opacity-30 grayscale transition-all duration-1000 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1493225255756-d9584f8606e9?auto=format&fit=crop&q=80&w=1000')"></div>
+            
+            <div class="relative z-10 flex flex-col items-center pointer-events-none">
+              <h2 id="album-title-display" class="text-[80px] md:text-[120px] font-serif italic text-gold leading-none mb-[-15px] drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)]">Thriller</h2>
+              <p id="album-meta" class="text-[10px] tracking-[0.4em] uppercase font-bold text-white/80 border-t border-white/20 pt-4">The Masterpiece • 1982</p>
+            </div>
+            
+            <div class="absolute bottom-6 right-8 flex flex-col items-end opacity-20 group-hover:opacity-40 transition-opacity">
+              <span id="track-number-bg" class="text-[84px] font-serif text-white italic leading-none">01</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-10 flex flex-col gap-8">
+          <div class="flex justify-between items-end">
+            <div class="space-y-1">
+              <h3 id="track-title" class="text-4xl md:text-5xl font-serif text-white tracking-tight">Thriller</h3>
+              <p id="track-artist" class="text-gold text-xs uppercase tracking-[0.3em] font-bold">Michael Jackson</p>
+            </div>
+            <div class="flex gap-10 items-center">
+              <button id="prev-btn" class="opacity-40 hover:opacity-100 hover:text-gold transition-all transform hover:scale-110 active:scale-95">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="19 20 9 12 19 4 19 20"></polygon><line x1="5" y1="19" x2="5" y2="5"></line></svg>
+              </button>
+              <button id="play-btn" class="btn-play">
+                <svg id="play-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </button>
+              <button id="next-btn" class="opacity-40 hover:opacity-100 hover:text-gold transition-all transform hover:scale-110 active:scale-95">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 4 15 12 5 20 5 4"></polygon><line x1="19" y1="5" x2="19" y2="19"></line></svg>
+              </button>
+            </div>
+          </div>
+          
+          <div class="space-y-3">
+            <div id="progress-container" class="h-1.5 w-full bg-white/10 rounded-full cursor-pointer group relative">
+              <div id="progress-bar" class="h-full w-[33%] bg-gradient-to-r from-gold to-gold-dark rounded-full relative">
+                <div class="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full border-2 border-gold shadow-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              </div>
+            </div>
+            <div class="flex justify-between text-[10px] uppercase tracking-[0.2em] text-white/40 font-bold">
+              <span id="current-time">02:14</span>
+              <span id="total-time">05:57</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Tracklist & Meta -->
+      <div class="w-full md:w-2/5 flex flex-col md:border-l border-white/5 md:pl-12 animate-slide-up [animation-delay:0.2s]">
+        <div class="flex justify-between items-center mb-8">
+          <h4 class="text-[10px] uppercase tracking-[0.4em] font-bold text-white/30">Archives</h4>
+          <span class="text-[9px] px-3 py-1 bg-white/10 text-white/60 tracking-widest uppercase border border-white/10 rounded-sm">6 Tracks</span>
+        </div>
+        
+        <div id="track-list" class="flex flex-col gap-2 overflow-y-auto max-h-[460px] pr-2 custom-scrollbar">
+          <div class="track-item active" data-track="Thriller" data-num="01" data-duration="05:57" data-album="Thriller" data-year="1982">
+            <div class="flex items-center gap-5">
+              <span class="track-num">01</span>
+              <span class="track-name">Thriller</span>
+            </div>
+            <span class="track-time">05:57</span>
+          </div>
+          <div class="track-item" data-track="Billie Jean" data-num="02" data-duration="04:54" data-album="Thriller" data-year="1982">
+            <div class="flex items-center gap-5">
+              <span class="track-num">02</span>
+              <span class="track-name">Billie Jean</span>
+            </div>
+            <span class="track-time">04:54</span>
+          </div>
+          <div class="track-item" data-track="Smooth Criminal" data-num="03" data-duration="04:17" data-album="Bad" data-year="1987">
+            <div class="flex items-center gap-5">
+              <span class="track-num">03</span>
+              <span class="track-name">Smooth Criminal</span>
+            </div>
+            <span class="track-time">04:17</span>
+          </div>
+          <div class="track-item" data-track="Beat It" data-num="04" data-duration="04:18" data-album="Thriller" data-year="1982">
+            <div class="flex items-center gap-5">
+              <span class="track-num">04</span>
+              <span class="track-name">Beat It</span>
+            </div>
+            <span class="track-time">04:18</span>
+          </div>
+          <div class="track-item" data-track="Bad" data-num="05" data-duration="04:07" data-album="Bad" data-year="1987">
+            <div class="flex items-center gap-5">
+              <span class="track-num">05</span>
+              <span class="track-name">Bad</span>
+            </div>
+            <span class="track-time">04:07</span>
+          </div>
+          <div class="track-item" data-track="Man in the Mirror" data-num="06" data-duration="05:19" data-album="Bad" data-year="1987">
+            <div class="flex items-center gap-5">
+              <span class="track-num">06</span>
+              <span class="track-name">Man in the Mirror</span>
+            </div>
+            <span class="track-time">05:19</span>
+          </div>
+        </div>
+
+        <div class="mt-auto pt-8">
+          <div class="bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] p-6 border border-white/5 rounded-xl">
+            <p class="text-[10px] text-gold uppercase tracking-[0.2em] font-bold mb-3">Artist Legacy</p>
+            <p class="text-[11px] leading-relaxed text-white/40 font-light">
+              Michael Jackson, the "King of Pop," redefined music videos with "Thriller." 
+              Winning 13 Grammys and selling over 400 million records, his influence spans generations.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="mt-12 flex flex-col md:flex-row justify-between items-center text-[9px] uppercase tracking-[0.3em] text-white/20 border-t border-white/5 pt-8 animate-fade-in [animation-delay:0.5s] space-y-4 md:space-y-0">
+      <span>© 1982 Epic Records | Sony Music Entertainment</span>
+      <div class="flex gap-8">
+        <span class="hover:text-white transition-colors cursor-help">Hi-Res Audio</span>
+        <span class="text-gold">Spatial Sound: Active</span>
+        <span class="hover:text-white transition-colors cursor-help">Master Recording</span>
+      </div>
+    </footer>
+
+    <script>
+      const playBtn = document.getElementById('play-btn');
+      const playIcon = document.getElementById('play-icon');
+      const trackItems = document.querySelectorAll('.track-item');
+      const trackTitle = document.getElementById('track-title');
+      const totalTimeSpan = document.getElementById('total-time');
+      const progressContainer = document.getElementById('progress-container');
+      const progressBar = document.getElementById('progress-bar');
+      const trackNumberBg = document.getElementById('track-number-bg');
+      const albumTitleDisplay = document.getElementById('album-title-display');
+      const albumMetaDisplay = document.getElementById('album-meta');
+
+      let isPlaying = false;
+
+      playBtn.addEventListener('click', () => {
+        isPlaying = !isPlaying;
+        if (isPlaying) {
+          playIcon.innerHTML = `<rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect>`;
+          playBtn.classList.add('shadow-[0_0_20px_rgba(212,175,55,0.4)]');
+        } else {
+          playIcon.innerHTML = `<polygon points="5 3 19 12 5 21 5 3"></polygon>`;
+          playBtn.classList.remove('shadow-[0_0_20px_rgba(212,175,55,0.4)]');
+        }
+      });
+
+      trackItems.forEach(item => {
+        item.addEventListener('click', () => {
+          trackItems.forEach(i => i.classList.remove('active'));
+          item.classList.add('active');
+          
+          const trackName = item.getAttribute('data-track');
+          const duration = item.getAttribute('data-duration');
+          const num = item.getAttribute('data-num');
+          const album = item.getAttribute('data-album');
+          const year = item.getAttribute('data-year');
+          
+          trackTitle.innerText = trackName;
+          totalTimeSpan.innerText = duration;
+          trackNumberBg.innerText = num;
+          albumTitleDisplay.innerText = album;
+          albumMetaDisplay.innerText = `${album} • ${year}`;
+          
+          // Reset progress
+          progressBar.style.width = '0%';
+        });
+      });
+
+      progressContainer.addEventListener('click', (e) => {
+        const width = progressContainer.clientWidth;
+        const clickX = e.offsetX;
+        const percentage = (clickX / width) * 100;
+        progressBar.style.width = percentage + '%';
+      });
+    </script>
+  </body>
+</html>
+
