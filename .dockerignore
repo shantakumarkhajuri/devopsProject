@@ -1,31 +1,13 @@
-# dependencies
 node_modules
-npm-debug.log
-
-# build output
 dist
-build
-
-# git
 .git
 .gitignore
-
-# environment
 .env
 .env.*
-
-# OS / editor files
-.DS_Store
-Thumbs.db
-
-# logs
-logs
-*.log
-
-# Docker files (optional)
+npm-debug.log
 Dockerfile
 .dockerignore
-
-# IDE files
 .vscode
 .idea
+.DS_Store
+Thumbs.db
